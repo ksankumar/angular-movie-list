@@ -1,0 +1,27 @@
+<main role="main">
+  <div class="details-bg" *ngIf="MovieDetails.poster_path"
+       [style]="safeCss()">
+    <div class="custom_bg">
+      <div class="details-container">
+        <div style="padding: 0;background: transparent;">
+          <mat-grid-list cols="6" rowHeight="600px" gutterSize="0">
+            <mat-grid-tile colspan="2" gutterSize="0">
+              <img src="https://image.tmdb.org/t/p/w500{{MovieDetails.poster_path}}"
+                   class="details-poster"
+                   alt="{{MovieDetails.title}}"/>
+            </mat-grid-tile>
+            <mat-grid-tile colspan="4">
+              <mat-card-content class="details-info">
+                <mat-card-title>
+                  <h2>{{MovieDetails.original_title}}
+                    <span class="release-date">({{MovieDetails.release_date|dateFormat:'YYYY'}})</span>
+                  </h2>
+                </mat-card-title>
+              </mat-card-content>
+            </mat-grid-tile>
+          </mat-grid-list>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

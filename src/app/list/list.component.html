@@ -1,0 +1,62 @@
+<section class="content" role="main">
+  <div class="container">
+    <mat-card *ngFor="let movie of Movies.results" style="padding: 0; height: 280px">
+
+      <mat-grid-list cols="5" rowHeight="280px">
+        <mat-grid-tile colspan="2">
+          <img src="https://image.tmdb.org/t/p/w500{{movie.poster_path}}" class="movie-poster" alt="{{movie.title}}"/>
+        </mat-grid-tile>
+        <mat-grid-tile colspan="3">
+          <mat-card-content style="top:0; position: absolute; padding: 10px">
+            <mat-card-header>
+              <div mat-card-avatar class="outer_ring">
+                <mat-progress-spinner
+                  diameter="40"
+                  [ngClass]="movie.vote_average*10>70 ? 'high-rate' : 'low-rate'"
+                  mode="determinate"
+                  [value]="movie.vote_average*10">
+                </mat-progress-spinner>
+                <div style="position: absolute; top: 23px; left: 23px; color: white;">
+                  <small>{{ movie.vote_average * 10 }}<sup>%</sup></small>
+                </div>
+              </div>
+              <mat-card-title><a mat-button routerLink="/movie-details/{{movie.id}}" class="movie-title">{{movie.title}}</a></mat-card-title>
+              <mat-card-subtitle><i>{{movie.release_date|dateFormat}}</i></mat-card-subtitle>
+            </mat-card-header>
+            <div class="description">
+              {{movie.overview}}
+            </div>
+          </mat-card-content>
+          <div class="more-info">
+            <a mat-button routerLink="/movie-details/{{movie.id}}">More info</a>
+          </div>
+        </mat-grid-tile>
+      </mat-grid-list>
+      <!--    <mat-card-header>-->
+      <!--      <div mat-card-avatar class="outer_ring">-->
+      <!--        <mat-progress-spinner-->
+      <!--          diameter="40"-->
+      <!--          [ngClass]="movie.vote_average*10>70 ? 'high-rate' : 'low-rate'"-->
+      <!--          mode="determinate"-->
+      <!--          [value]="movie.vote_average*10">-->
+      <!--        </mat-progress-spinner>-->
+      <!--        <div style="position: absolute;top: 30px;left: 30px;color: white;">-->
+      <!--          <small>{{ movie.vote_average * 10 }}<sup>%</sup></small>-->
+      <!--        </div>-->
+      <!--      </div>-->
+      <!--      <mat-card-title>{{movie.title}}</mat-card-title>-->
+      <!--      <mat-card-subtitle><i>{{movie.release_date|dateFormat}}</i></mat-card-subtitle>-->
+      <!--    </mat-card-header>-->
+      <!--    <mat-card-content style="min-height: 170px">-->
+      <!--      <p>-->
+      <!--        <img src="https://image.tmdb.org/t/p/w500/{{movie.poster_path}}" class="movie-poster" alt="{{movie.title}}">-->
+      <!--        {{movie.overview}}-->
+      <!--      </p>-->
+      <!--    </mat-card-content>-->
+      <!--    <mat-divider></mat-divider>-->
+      <!--    <mat-card-actions>-->
+      <!--      <a mat-button routerLink=".">More info</a>-->
+      <!--    </mat-card-actions>-->
+    </mat-card>
+  </div>
+</section>
