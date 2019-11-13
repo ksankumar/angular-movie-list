@@ -8,7 +8,7 @@ Listing top 20 most popular movies
 # Movies details page(click More info link)
 Describing full movie details with trailer
 
-#Movie trailer(Click Play Trailer link)
+# Movie trailer(Click Play Trailer link)
 Playing movie trailer 
 
 ## Development server
