@@ -22,7 +22,7 @@ Playing movie trailer
 Run `ng serve` or `npm run start` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
 ## To run the application
-- Open terminal window and run <code>ng serve<code> or <code>npm run start</code>
+- Open terminal window and run <code>ng serve</code> or <code>npm run start</code>
 
 # Build Commands
 
