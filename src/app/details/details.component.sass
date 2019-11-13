@@ -2,31 +2,19 @@
   background-image: radial-gradient(circle at 20% 50%, rgba(19.61%, 7.84%, 7.84%, 0.98) 0%, rgba(27.45%, 13.73%, 13.73%, 0.88) 100%)
 
 .details-bg
+  //background-image: url(https://image.tmdb.org/t/p/w1400_and_h450_face/a6cDxdwaQIFjSkXf7uskg78ZyTq.jpg)
   width: 100%
   position: relative
   z-index: 1
-
-  &:before
-    content: ''
-    position: absolute
-    left: 0
-    right: 0
-    width: 100%
-    height: 100%
-    z-index: -1
-    display: block
-    filter: opacity(100) grayscale(100%) contrast(130%)
-    background-size: cover
-    background-repeat: no-repeat
-    background-position: 50% 50%
-    background-image: var(--featured-image)
-  //url(https://image.tmdb.org/t/p/w1400_and_h450_face/a6cDxdwaQIFjSkXf7uskg78ZyTq.jpg)
-    will-change: opacity
-    transition: filter 1s
+  background-size: cover
+  background-repeat: no-repeat
+  background-position: 50% 50%
+  will-change: opacity
+  transition: filter 1s
 
 .details-container
   margin: 0 auto
-  padding-top: 40px
+  padding-top: 20px
   width: 1000px
   background: transparent
   z-index: 0
@@ -39,11 +27,117 @@
   outline: none
 
 .details-info
-  color: white
   width: 100%
   height: 100%
+
+  h3
+    font-weight: 600
+    line-height: 1.3em
+    font-size: 1.3em
+
+.movie-title
+  margin: 0
+
+.movie-actions
+  margin-bottom: 30px
+  width: 100%
+  height: 68px
+  padding: 0
+  display: flex
+  align-items: center
+  justify-content: flex-start
+  list-style-type: none
+  line-height: 1.4em
+
+.movie-actions li
+  font-size: 0.9em
+  margin-right: 20px
+  color: #ffffff
+
+  .play-video
+    color: #ffffff
+    cursor: pointer
+    display: inline-flex
+    align-items: center
+    justify-content: center
+    align-content: center
+    font-size: 0.7em
+
+    &:hover
+      opacity: 0.6
+
+.movie-actions li.chart
+  background: transparent
+  display: inline-flex
+  align-items: center
+  justify-content: center
+  box-sizing: border-box
+  height: 68px
+
+  .text
+    font-weight: 700
+    margin-left: 6px
+    line-height: 1.5em
+    white-space: pre-line
+    font-size: 0.7em
+
+.outer_ring
+  width: 60px
+  height: 60px
+  padding: 3px
+  position: relative
+  border-radius: 50%
+  background-color: #081c22
 
 .release-date
   opacity: 0.6
   font-size: 0.7em
   font-weight: 600
+
+.overview p
+  line-height: 2.0em
+
+.details-info
+  color: #ffffff
+
+  .featured
+    margin-top: 30px
+
+ol.people
+  justify-content: flex-start
+  flex-wrap: wrap
+  list-style-type: none
+  list-style-position: inside
+  margin: 0
+  padding: 0
+  display: flex
+
+  li
+    background-color: transparent
+    height: auto
+    width: 33%
+    flex-basis: 33%
+    text-align: left
+    margin-bottom: 14px
+    margin-right: 0
+    box-sizing: border-box
+    padding-right: 20px
+
+    p
+      font-size: 1em
+      line-height: 1.6em
+      margin: 0
+      padding: 0
+      overflow: hidden
+      text-overflow: ellipsis
+
+    p.character
+      font-weight: bold
+      font-size: 1.0em
+.genres
+  display: flex
+  align-items: center
+  justify-content: flex-start
+  list-style-type: none
+  h3
+    margin-right: 18px

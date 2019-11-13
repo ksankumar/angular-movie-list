@@ -3,6 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {Config} from './config';
 import {Movies} from './models/movies';
 import {Details} from './models/details';
+import {Trailer} from './models/trailer';
 import {Observable, throwError} from 'rxjs';
 import {catchError, retry} from 'rxjs/operators';
 
@@ -32,6 +33,15 @@ export class RestApiService {
 // Movie details
   getMovieDetails(id): Observable<Details> {
     return this.http.get<Details>(this.apiURL + id + '?api_key=' + Config.apiKey)
+      .pipe(
+        retry(1),
+        catchError(this.handleError)
+      );
+  }
+
+  // Get video id
+  getMovieTrailer(id): Observable<Trailer> {
+    return this.http.get<Trailer>(this.apiURL + id + '/videos?api_key=' + Config.apiKey)
       .pipe(
         retry(1),
         catchError(this.handleError)

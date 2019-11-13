@@ -14,10 +14,13 @@ import {DetailsComponent} from './details/details.component';
 import {ListComponent} from './list/list.component';
 import {HeaderComponent} from './header/header.component';
 import {FooterComponent} from './footer/footer.component';
-// import {RestApiService} from './shared/rest-api.service';
+import {TrailerComponent} from './trailer/trailer.component';
+
 import {MatListModule} from '@angular/material/list';
 import { DateFormat } from './shared/custom.pipe';
 import {MatCardModule, MatGridListModule, MatIconModule, MatProgressSpinnerModule} from '@angular/material';
+import {MatChipsModule} from '@angular/material/chips';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -26,7 +29,8 @@ import {MatCardModule, MatGridListModule, MatIconModule, MatProgressSpinnerModul
     ListComponent,
     HeaderComponent,
     FooterComponent,
-    DateFormat
+    DateFormat,
+    TrailerComponent
   ],
   imports: [
     HttpClientModule,
@@ -37,7 +41,12 @@ import {MatCardModule, MatGridListModule, MatIconModule, MatProgressSpinnerModul
     MatIconModule,
     MatCardModule,
     MatGridListModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatChipsModule,
+    MatDialogModule
+  ],
+  entryComponents: [
+    TrailerComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

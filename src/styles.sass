@@ -1,4 +1,28 @@
 /* You can add global styles to this file, and also import other style files */
+body
+  display: flex
+  flex-direction: column
+  min-height: 100%
+  margin: 0
+  padding: 0
+  height: auto
+  -ms-overflow-style: -ms-autohiding-scrollbar
+  background-color: #fff
+  color: #000
+  font-display: auto
+  font-family: 'Source Sans Pro', Arial, sans-serif
+  font-size: 1em
+  -webkit-font-smoothing: antialiased
+  -moz-osx-font-smoothing: grayscale
+  scroll-behavior: smooth !important
+  overscroll-behavior-y: none
+  -webkit-overflow-scrolling: touch
+  webkit-app-region: no-drag
+  overflow-x: hidden
+
+::-webkit-scrollbar
+  display: none
+
 .content
   display: flex
   margin: 32px auto
@@ -25,15 +49,18 @@
   -webkit-font-smoothing: antialiased
   -moz-osx-font-smoothing: grayscale
 
-
-.toolbar
+.circle-content
+  position: absolute
+  width: 60px
   height: 60px
-  margin: -8px
-  display: flex
-  align-items: center
-  background-color: #1976d2
+  top: 0
   color: white
-  font-weight: 600
+  display: flex
+  justify-content: center
+  align-items: center
+
+  sup
+    font-size: 0.5rem
 
 .card-container
   display: flex
@@ -54,6 +81,28 @@ a
     text-decoration: none
     color: #125699
 
+.icon-outline
+  border: 2px solid #ffffff
+  box-sizing: border-box
+  background: rgba(0, 0, 0, 0.2)
+  border-radius: 50%
+  width: 46px
+  height: 46px
+  display: inline-flex
+  align-items: center
+  justify-content: center
+  align-content: center
+  color: #ffffff
+  -webkit-transition: background-color 1s ease-out
+  -moz-transition: background-color 1s ease-out
+  -o-transition: background-color 1s ease-out
+  transition: background-color 1s ease-out
+
+  &:hover
+    color: #321414
+    background-color: #ffffff
+    border-color: rgba(100%, 100%, 100%, 0.2)
+    cursor: pointer
 .circle-link
   height: 40px
   width: 40px
@@ -90,3 +139,6 @@ footer
 .mat-grid-tile .mat-figure
   justify-content: flex-start !important
   align-items: flex-start !important
+
+.mat-dialog-container
+  padding: 0 !important

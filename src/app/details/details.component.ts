@@ -1,7 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute, Router} from '@angular/router';
+import {ActivatedRoute} from '@angular/router';
 import {RestApiService} from '../shared/rest-api.service';
-import {DomSanitizer} from '@angular/platform-browser';
+import {MatDialog, MatDialogConfig, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import {TrailerComponent} from '../trailer/trailer.component';
 
 @Component({
   selector: 'app-details',
@@ -11,26 +12,49 @@ import {DomSanitizer} from '@angular/platform-browser';
 export class DetailsComponent implements OnInit {
   movieId = this.router.snapshot.params['movie-id'];
   MovieDetails: any = {};
-  imgUrl: any = '';
-  private sanitizer: any;
+  innerWidth: any;
 
   constructor(
     public router: ActivatedRoute,
     public restApi: RestApiService,
-    public doms: DomSanitizer
+    public dialog: MatDialog
   ) {
   }
 
   ngOnInit() {
+    this.innerWidth = window.innerWidth;
     return this.restApi.getMovieDetails(this.movieId).subscribe((data: {}) => {
-      // this.imgUrl = this.doms.bypassSecurityTrustStyle('https://image.tmdb.org/t/p/w1400_and_h450_face/a6cDxdwaQIFjSkXf7uskg78ZyTq.jpg');
       this.MovieDetails = data;
     });
   }
 
-  safeCss() {
-    // tslint:disable-next-line:max-line-length
-    return this.doms.bypassSecurityTrustStyle('--featured-image:https://image.tmdb.org/t/p/w500/vqzNJRH4YyquRiWxCCOH0aXggHI.jpg');
-  }
+  openDialog(): void {
+    const dialogConfig = new MatDialogConfig();
 
+    dialogConfig.disableClose = false;
+    dialogConfig.autoFocus = true;
+
+    let relativeWidth = (this.innerWidth * 80) / 100; // take up to 80% of the screen size
+    if (this.innerWidth > 1500) {
+      relativeWidth = (1500 * 80) / 100;
+    } else {
+      relativeWidth = (this.innerWidth * 80) / 100;
+    }
+
+    const relativeHeight = (relativeWidth * 9) / 16; // 16:9 to which we add 120 px for the dialog action buttons ("close")
+    dialogConfig.width = relativeWidth + 'px';
+    dialogConfig.height = relativeHeight + 'px';
+    this.restApi.getMovieTrailer(this.movieId).subscribe((data: {
+      results: any;
+    }) => {
+      dialogConfig.data = {
+        url: data.results[0].key
+      };
+      this.dialog.open(TrailerComponent, dialogConfig);
+    });
+    // dialogRef.afterClosed().subscribe(result => {
+    //   console.log('The dialog was closed');
+    //   // this.animal = result;
+    // });
+  }
 }

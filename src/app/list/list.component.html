@@ -1,7 +1,6 @@
 <section class="content" role="main">
   <div class="container">
     <mat-card *ngFor="let movie of Movies.results" style="padding: 0; height: 280px">
-
       <mat-grid-list cols="5" rowHeight="280px">
         <mat-grid-tile colspan="2">
           <img src="https://image.tmdb.org/t/p/w500{{movie.poster_path}}" class="movie-poster" alt="{{movie.title}}"/>
