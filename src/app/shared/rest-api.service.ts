@@ -4,14 +4,14 @@ import {Config} from './config';
 import {Movies} from './models/movies';
 import {Details} from './models/details';
 import {Trailer} from './models/trailer';
-import {Observable, throwError} from 'rxjs';
+import {config, Observable, throwError} from 'rxjs';
 import {catchError, retry} from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RestApiService {
-  apiURL = 'https://api.themoviedb.org/3/movie/';
+  apiURL = Config.apiUrl;
 
   constructor(private http: HttpClient) {
   }

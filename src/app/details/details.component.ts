@@ -52,9 +52,5 @@ export class DetailsComponent implements OnInit {
       };
       this.dialog.open(TrailerComponent, dialogConfig);
     });
-    // dialogRef.afterClosed().subscribe(result => {
-    //   console.log('The dialog was closed');
-    //   // this.animal = result;
-    // });
   }
 }

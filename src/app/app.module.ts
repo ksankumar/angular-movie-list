@@ -16,11 +16,15 @@ import {HeaderComponent} from './header/header.component';
 import {FooterComponent} from './footer/footer.component';
 import {TrailerComponent} from './trailer/trailer.component';
 
-import {MatListModule} from '@angular/material/list';
-import { DateFormat } from './shared/custom.pipe';
-import {MatCardModule, MatGridListModule, MatIconModule, MatProgressSpinnerModule} from '@angular/material';
-import {MatChipsModule} from '@angular/material/chips';
-import { MatDialogModule } from '@angular/material/dialog';
+import {DateFormat} from './shared/custom.pipe';
+import {
+  MatCardModule,
+  MatGridListModule,
+  MatChipsModule,
+  MatDialogModule,
+  MatIconModule,
+  MatProgressSpinnerModule
+} from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -37,7 +41,6 @@ import { MatDialogModule } from '@angular/material/dialog';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatListModule,
     MatIconModule,
     MatCardModule,
     MatGridListModule,
