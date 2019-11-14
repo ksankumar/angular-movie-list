@@ -1,11 +1,15 @@
 <section class="content" role="main">
   <mat-form-field appearance="outline" class="search-box">
     <mat-label>Search for a movie</mat-label>
-    <input matInput [(ngModel)]="searchQuery" placeholder="Enter movie name...">
+    <input matInput class="form-control"
+           [ngModel]="searchQuery"
+           (ngModelChange)="searchQuery = $event ; searchMovie($event)"
+           placeholder="Enter movie name...">
     <mat-icon matSuffix>youtube_searched_for</mat-icon>
   </mat-form-field>
+
   <div class="container">
-    <mat-card *ngFor="let movie of Movies.results| filter : searchQuery" style="padding: 0; height: 280px">
+    <mat-card *ngFor="let movie of Movies.results" style="padding: 0; height: 280px">
       <mat-grid-list cols="5" rowHeight="280px" class="fade-in">
         <mat-grid-tile colspan="2">
           <img src="https://image.tmdb.org/t/p/w500{{movie.poster_path}}" class="movie-poster" alt="{{movie.title}}"/>
@@ -39,6 +43,13 @@
           </div>
         </mat-grid-tile>
       </mat-grid-list>
+    </mat-card>
+    <mat-card *ngIf="noResult">
+      <mat-card-content>
+        <mat-card-header>
+          <h2>No movies found...</h2>
+        </mat-card-header>
+      </mat-card-content>
     </mat-card>
   </div>
 </section>

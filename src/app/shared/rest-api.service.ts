@@ -4,7 +4,7 @@ import {Config} from './config';
 import {Movies} from './models/movies';
 import {Details} from './models/details';
 import {Trailer} from './models/trailer';
-import {config, Observable, throwError} from 'rxjs';
+import {Observable, throwError} from 'rxjs';
 import {catchError, retry} from 'rxjs/operators';
 
 @Injectable({
@@ -33,6 +33,15 @@ export class RestApiService {
 // Movie details
   getMovieDetails(id): Observable<Details> {
     return this.http.get<Details>(this.apiURL + id + '?api_key=' + Config.apiKey)
+      .pipe(
+        retry(1),
+        catchError(this.handleError)
+      );
+  }
+
+// Movie search
+  searchMovie(query): Observable<Movies> {
+    return this.http.get<Movies>(Config.search + query)
       .pipe(
         retry(1),
         catchError(this.handleError)

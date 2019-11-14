@@ -1,7 +1,7 @@
 export class Movies {
   page: number;
-  'total_results': string;
-  'total_pages': string;
+  'total_results': number;
+  'total_pages': number;
   email: string;
   results: object;
 
