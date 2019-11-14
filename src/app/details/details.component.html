@@ -20,17 +20,15 @@
                 <mat-card-title>
                   <ul class="movie-actions">
                     <li class="chart">
-                      <div class="progress">
-                        <div mat-card-avatar class="outer_ring">
-                          <mat-progress-spinner
-                            diameter="60"
-                            [ngClass]="MovieDetails.vote_average*10>70 ? 'high-rate' : 'low-rate'"
-                            mode="determinate"
-                            [value]="MovieDetails.vote_average*10">
-                          </mat-progress-spinner>
-                          <div class="circle-content">
-                            <small>{{ MovieDetails.vote_average * 10 }}<sup>%</sup></small>
-                          </div>
+                      <div mat-card-avatar class="outer_ring">
+                        <mat-progress-spinner
+                          diameter="60"
+                          [ngClass]="MovieDetails.vote_average*10>70 ? 'high-rate' : 'low-rate'"
+                          mode="determinate"
+                          [value]="MovieDetails.vote_average*10">
+                        </mat-progress-spinner>
+                        <div class="circle-content">
+                          <small>{{ MovieDetails.vote_average * 10 }}<sup>%</sup></small>
                         </div>
                       </div>
                       <div class="text">User<br/>Score</div>
@@ -102,7 +100,8 @@
                 <div class="genres">
                   <h3>Genres</h3>
                   <mat-chip-list aria-label="Genres selection">
-                    <mat-chip [style.backgroundColor]="'grey'" [style.color]="'white'"  *ngFor="let genre of MovieDetails.genres">{{genre.name}}</mat-chip>
+                    <mat-chip [style.backgroundColor]="'grey'" [style.color]="'white'"
+                              *ngFor="let genre of MovieDetails.genres">{{genre.name}}</mat-chip>
                   </mat-chip-list>
                 </div>
               </mat-card-content>

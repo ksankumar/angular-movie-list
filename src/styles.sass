@@ -23,6 +23,11 @@ body
 ::-webkit-scrollbar
   display: none
 
+router-outlet ~ *
+  position: absolute
+  height: 100%
+  width: 100%
+
 .content
   display: flex
   margin: 32px auto
@@ -103,6 +108,7 @@ a
     background-color: #ffffff
     border-color: rgba(100%, 100%, 100%, 0.2)
     cursor: pointer
+
 .circle-link
   height: 40px
   width: 40px
@@ -142,3 +148,40 @@ footer
 
 .mat-dialog-container
   padding: 0 !important
+
+.fade-in
+  animation: fadein 2s
+  -moz-animation: fadein 2s
+  /* Firefox
+  -webkit-animation: fadein 2s
+  /* Safari and Chrome
+  -o-animation: fadein 2s
+/* Opera
+
+@keyframes fadein
+  from
+    opacity: 0
+  to
+    opacity: 1
+
+@-moz-keyframes fadein
+  /* Firefox
+  from
+    opacity: 0
+  to
+    opacity: 1
+
+@-webkit-keyframes fadein
+  /* Safari and Chrome
+  from
+    opacity: 0
+
+  to
+    opacity: 1
+
+@-o-keyframes fadein
+  /* Opera
+  from
+    opacity: 0
+  to
+    opacity: 1

@@ -1,7 +1,6 @@
-import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
-import {AppComponent} from './app.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {BrowserModule} from '@angular/platform-browser';
 
 // HttpClient module for RESTful API
 import {HttpClientModule} from '@angular/common/http';
@@ -10,6 +9,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {AppRoutingModule} from './app-routing.module';
 
 // Components
+import {AppComponent} from './app.component';
 import {DetailsComponent} from './details/details.component';
 import {ListComponent} from './list/list.component';
 import {HeaderComponent} from './header/header.component';
@@ -17,14 +17,19 @@ import {FooterComponent} from './footer/footer.component';
 import {TrailerComponent} from './trailer/trailer.component';
 
 import {DateFormat} from './shared/custom.pipe';
+import {FilterPipe} from './shared/filter.pipe';
+
 import {
+  MatInputModule,
   MatCardModule,
   MatGridListModule,
   MatChipsModule,
   MatDialogModule,
   MatIconModule,
-  MatProgressSpinnerModule
+  MatProgressSpinnerModule,
+  MatFormFieldModule
 } from '@angular/material';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -34,6 +39,7 @@ import {
     HeaderComponent,
     FooterComponent,
     DateFormat,
+    FilterPipe,
     TrailerComponent
   ],
   imports: [
@@ -43,15 +49,17 @@ import {
     BrowserAnimationsModule,
     MatIconModule,
     MatCardModule,
+    MatInputModule,
     MatGridListModule,
     MatProgressSpinnerModule,
     MatChipsModule,
-    MatDialogModule
+    MatDialogModule,
+    MatFormFieldModule,
+    FormsModule
   ],
   entryComponents: [
     TrailerComponent
   ],
-  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule {

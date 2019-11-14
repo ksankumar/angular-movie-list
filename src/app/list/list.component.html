@@ -1,7 +1,12 @@
 <section class="content" role="main">
+  <mat-form-field appearance="outline" class="search-box">
+    <mat-label>Search for a movie</mat-label>
+    <input matInput [(ngModel)]="searchQuery" placeholder="Enter movie name...">
+    <mat-icon matSuffix>youtube_searched_for</mat-icon>
+  </mat-form-field>
   <div class="container">
-    <mat-card *ngFor="let movie of Movies.results" style="padding: 0; height: 280px">
-      <mat-grid-list cols="5" rowHeight="280px">
+    <mat-card *ngFor="let movie of Movies.results| filter : searchQuery" style="padding: 0; height: 280px">
+      <mat-grid-list cols="5" rowHeight="280px" class="fade-in">
         <mat-grid-tile colspan="2">
           <img src="https://image.tmdb.org/t/p/w500{{movie.poster_path}}" class="movie-poster" alt="{{movie.title}}"/>
         </mat-grid-tile>
@@ -15,11 +20,14 @@
                   mode="determinate"
                   [value]="movie.vote_average*10">
                 </mat-progress-spinner>
-                <div style="position: absolute; top: 23px; left: 23px; color: white;">
-                  <small>{{ movie.vote_average * 10 }}<sup>%</sup></small>
+                <div class="circle-content" style="width: 40px;height:65px;">
+                  <small *ngIf=" movie.vote_average>0">{{ movie.vote_average * 10 }}<sup>%</sup></small>
+                  <h4 *ngIf=" movie.vote_average<=0">NR</h4>
                 </div>
               </div>
-              <mat-card-title><a mat-button routerLink="/movie-details/{{movie.id}}" class="movie-title">{{movie.title}}</a></mat-card-title>
+              <mat-card-title>
+                <a mat-button routerLink="/movie-details/{{movie.id}}" class="movie-title">{{movie.title}}</a>
+              </mat-card-title>
               <mat-card-subtitle><i>{{movie.release_date|dateFormat}}</i></mat-card-subtitle>
             </mat-card-header>
             <div class="description">
