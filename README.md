@@ -5,6 +5,9 @@ This project listing most recent popular movies based on The Movie Database (TMD
 # Movie list page
 Listing top 20 most popular movies
 
+# Search movie
+We can search any movie name
+
 # Movies details page(click More info link)
 Describing full movie details with trailer
 
