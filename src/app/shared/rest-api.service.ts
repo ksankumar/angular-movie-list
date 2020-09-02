@@ -1,11 +1,11 @@
-import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
-import {Config} from './config';
-import {Movies} from './models/movies';
-import {Details} from './models/details';
-import {Trailer} from './models/trailer';
-import {Observable, throwError} from 'rxjs';
-import {catchError, retry} from 'rxjs/operators';
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Config } from './config';
+import { Movies } from './models/movies';
+import { Details } from './models/details';
+import { Trailer } from './models/trailer';
+import { Observable, throwError } from 'rxjs';
+import { catchError, retry } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -23,24 +23,24 @@ export class RestApiService {
   // }
   // Movie list
   getAllMovies(): Observable<Movies> {
-    return this.http.get<Movies>(this.apiURL + 'popular?api_key=' + Config.apiKey)
+    return this.http.get<Movies>(`${this.apiURL}popular?api_key=${Config.apiKey}`)
       .pipe(
         retry(1),
         catchError(this.handleError)
       );
   }
 
-// Movie details
-  getMovieDetails(id): Observable<Details> {
-    return this.http.get<Details>(this.apiURL + id + '?api_key=' + Config.apiKey)
+  // Movie details
+  getMovieDetails(id: number): Observable<Details> {
+    return this.http.get<Details>(`${this.apiURL}${id}?api_key=${Config.apiKey}`)
       .pipe(
         retry(1),
         catchError(this.handleError)
       );
   }
 
-// Movie search
-  searchMovie(query): Observable<Movies> {
+  // Movie search
+  searchMovie(query: string): Observable<Movies> {
     return this.http.get<Movies>(Config.search + query)
       .pipe(
         retry(1),
@@ -49,8 +49,8 @@ export class RestApiService {
   }
 
   // Get video id
-  getMovieTrailer(id): Observable<Trailer> {
-    return this.http.get<Trailer>(this.apiURL + id + '/videos?api_key=' + Config.apiKey)
+  getMovieTrailer(id: number): Observable<Trailer> {
+    return this.http.get<Trailer>(`${this.apiURL}${id}/videos?api_key=${Config.apiKey}`)
       .pipe(
         retry(1),
         catchError(this.handleError)
@@ -58,7 +58,7 @@ export class RestApiService {
   }
 
   // Error handling
-  handleError(error) {
+  handleError(error: any) {
     let errorMessage = '';
     if (error.error instanceof ErrorEvent) {
       // Get client-side error

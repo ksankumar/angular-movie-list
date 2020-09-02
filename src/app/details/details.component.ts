@@ -34,13 +34,7 @@ export class DetailsComponent implements OnInit {
     dialogConfig.disableClose = false;
     dialogConfig.autoFocus = true;
 
-    let relativeWidth = (this.innerWidth * 80) / 100; // take up to 80% of the screen size
-    if (this.innerWidth > 1500) {
-      relativeWidth = (1500 * 80) / 100;
-    } else {
-      relativeWidth = (this.innerWidth * 80) / 100;
-    }
-
+    const relativeWidth = this.innerWidth > 1500 ? (1500 * 80) / 100 : (this.innerWidth * 80) / 100; // take up to 80% of the screen size
     const relativeHeight = (relativeWidth * 9) / 16; // 16:9 to which we add 120 px for the dialog action buttons ("close")
     dialogConfig.width = relativeWidth + 'px';
     dialogConfig.height = relativeHeight + 'px';

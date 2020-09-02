@@ -1,4 +1,4 @@
-import {Pipe, PipeTransform} from '@angular/core';
+import { Pipe, PipeTransform } from '@angular/core';
 import * as moment from 'moment';
 
 @Pipe({
@@ -9,8 +9,8 @@ export class DateFormat implements PipeTransform {
     if (pretext && pretext === 'runtime') {
       let runTime: any = moment.utc(moment.duration(value, 'minutes').asMilliseconds()).format('H:m');
       runTime = runTime.split(':');
-      runTime = runTime[0] + 'h ' + runTime[1] + 'm';
-      return  runTime;
+      runTime = `${runTime[0]} h ${runTime[1]} m`;
+      return runTime;
     }
     return moment(value).format(pretext || 'LL');
   }
